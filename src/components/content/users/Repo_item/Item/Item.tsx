@@ -1,4 +1,5 @@
 import React from 'react'
+import style from './Item.module.scss'
 
 
 type ItemPropsType = {
@@ -10,8 +11,12 @@ type ItemPropsType = {
 
 export const Item = ({id, description, url, name}: ItemPropsType) => {
     return(
-        <div>
-            <h2>{name}</h2>
+        <div className={style.itemContainer}>
+            <div className={style.itemContent}>
+                <a href={url} target="_blank">{name}</a>
+                <span>{description}</span>
+            </div>
+
         </div>
     )
 }

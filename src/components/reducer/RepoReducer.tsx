@@ -10,15 +10,13 @@ export type RepositoriesType = {
     description: string | undefined
 }
 
-export const initialRepo = [
-
-]
+export const initialRepo = []
 
 
 export const RepoReducer = (state: InitialRepoType = initialRepo, action: SetUserRepoType): InitialRepoType => {
     switch (action.type){
         case "SET_USER_REPOS":{
-            return {...state, ...action.payload}
+            return [...state, ...action.payload]
         }
         default:{
             return state
@@ -27,7 +25,7 @@ export const RepoReducer = (state: InitialRepoType = initialRepo, action: SetUse
 }
 
 
-export const setUserReposAC = (payload: {id: number, name: string, html_url: string, description: string }) => {
+export const setUserReposAC = (payload: [{id: number, name: string, html_url: string, description: string }]) => {
     return {type: 'SET_USER_REPOS', payload} as const;
 };
 
