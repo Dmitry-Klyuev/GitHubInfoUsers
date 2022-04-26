@@ -10,8 +10,8 @@ export const GetUserApi={
         return axios.get<GetUserType>(`https://api.github.com/users/${user}`)   }
 }
 export const GetRepositoriesApi = {
-    gerRepos: (user:string) => {
-        return axios.get(`https://api.github.com/users/${user}/repos`)
+    gerRepos: (user:string, pageNumber:number) => {
+        return axios.get(`https://api.github.com/users/${user}/repos?per_page=4&page=${pageNumber}`)
     }
 }
 

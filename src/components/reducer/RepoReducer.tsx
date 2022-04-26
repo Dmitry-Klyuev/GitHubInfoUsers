@@ -16,7 +16,7 @@ export const initialRepo = []
 export const RepoReducer = (state: InitialRepoType = initialRepo, action: SetUserRepoType): InitialRepoType => {
     switch (action.type){
         case "SET_USER_REPOS":{
-            return [...state, ...action.payload]
+            return [...action.payload]
         }
         default:{
             return state
@@ -32,8 +32,8 @@ export const setUserReposAC = (payload: [{id: number, name: string, html_url: st
 export type SetUserRepoType = ReturnType<typeof setUserReposAC>
 
 //thunk
-export const setRepoTC = (user: string) => (dispatch: Dispatch) => {
-    GetRepositoriesApi.gerRepos(user)
+export const setRepoTC = (user: string, pageNumber: number) => (dispatch: Dispatch, getState: any) => {
+    GetRepositoriesApi.gerRepos(user, pageNumber)
         .then((res) => {
             // @ts-ignore
             const payload = res.data.map(el => {

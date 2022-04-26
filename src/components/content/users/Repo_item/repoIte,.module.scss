@@ -1,0 +1,13 @@
+.container {
+  position: absolute;
+  bottom: 25px;
+  right: 225px;
+
+  .paginator {
+    display: flex;
+
+    li {
+      list-style-type: none
+    }
+  }
+}
