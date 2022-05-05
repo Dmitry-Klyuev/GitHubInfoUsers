@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import style from './search.module.scss'
-import { setUserTC} from "../reducer/UseInfoReducer";
+import { setUserTC} from "../reducer/UserInfoReducer";
 import {useDispatch} from "react-redux";
 import {setRepoTC} from "../reducer/RepoReducer";
 
@@ -20,10 +20,7 @@ export const Search = () => {
             // @ts-ignore
             dispatch(setRepoTC(searchValue))
             navigate(`/user/${searchValue}`)
-
         }
-
-
     }
 
     return(
@@ -34,7 +31,7 @@ export const Search = () => {
                    onChange={searchInputValue}
                    onKeyPress={onKeyPressHandler}
             />
-            {/*<button onClick={()=>{<Navigate to={`/user`}/>}}>click</button>*/}
+
         </div>
     )
 }

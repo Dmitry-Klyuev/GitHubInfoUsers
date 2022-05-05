@@ -1,17 +1,10 @@
 import {Dispatch} from "redux";
-import {GetRepositoriesApi} from "../../api/api";
+import {GetRepositoriesApi, RootObject} from "../../api/api";
+import {setLoaderAC} from "./UserInfoReducer";
 
-export type InitialRepoType = Array<RepositoriesType>
-
-export type RepositoriesType = {
-    id: number | undefined,
-    name: string | undefined,
-    html_url: string | undefined,
-    description: string | undefined
-}
+export type InitialRepoType = RootObject[]
 
 export const initialRepo = []
-
 
 export const RepoReducer = (state: InitialRepoType = initialRepo, action: SetUserRepoType): InitialRepoType => {
     switch (action.type){
@@ -24,21 +17,20 @@ export const RepoReducer = (state: InitialRepoType = initialRepo, action: SetUse
     }
 }
 
-
-export const setUserReposAC = (payload: [{id: number, name: string, html_url: string, description: string }]) => {
+export const setUserReposAC = (payload: Array<RootObject>) => {
     return {type: 'SET_USER_REPOS', payload} as const;
 };
 
 export type SetUserRepoType = ReturnType<typeof setUserReposAC>
 
 //thunk
-export const setRepoTC = (user: string, pageNumber: number) => (dispatch: Dispatch, getState: any) => {
-    GetRepositoriesApi.gerRepos(user, pageNumber)
+export const setRepoTC = (payload: {user: string, pageNumber: number}) => (dispatch: Dispatch, getState: any) => {
+    dispatch(setLoaderAC())
+    GetRepositoriesApi.gerRepos(payload.user, payload.pageNumber)
         .then((res) => {
+            debugger
             // @ts-ignore
-            const payload = res.data.map(el => {
-                return {id: el.id, name: el.name, html_url: el.html_url, description: el.description};
-            });
-            dispatch(setUserReposAC(payload));
+            dispatch(setUserReposAC(res.data));
+            dispatch(setLoaderAC())
         });
 };

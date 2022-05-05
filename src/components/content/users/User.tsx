@@ -1,14 +1,14 @@
 import React from "react";
 import {useSelector} from "react-redux";
-import {rootReducerType} from "../../../store/store";
-import {defaultStateType} from "../../reducer/UseInfoReducer";
+import {RootReducerType} from "../../../store/store";
+import {defaultStateType} from "../../reducer/UserInfoReducer";
 import style from './user.module.scss';
 import followers from './img/followers.png';
 import following from './img/following.png';
 import {RepoItems} from "./Repo_item/RepoItem";
 
 export const User = () => {
-    const user = useSelector<rootReducerType, defaultStateType["user"]>(state => state.userReducer.user);
+    const user = useSelector<RootReducerType, defaultStateType["user"]>(state => state.userReducer.user);
 
     return (
         <div className={style.container}>
