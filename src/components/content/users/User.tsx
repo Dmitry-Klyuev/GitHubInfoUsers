@@ -5,7 +5,7 @@ import {defaultStateType} from "../../reducer/UserInfoReducer";
 import style from './user.module.scss';
 import followers from './img/followers.png';
 import following from './img/following.png';
-import {RepoItems} from "./Repo_item/RepoItem";
+import {RepoItem} from "./Repo_item/RepoItem";
 
 export const User = () => {
     const user = useSelector<RootReducerType, defaultStateType["user"]>(state => state.userReducer.user);
@@ -30,9 +30,8 @@ export const User = () => {
                     </div>
                 </div>
                 <div className={style.repo}>
-                    <p>Repositories ({user?.public_repos})</p>
                     <div className={style.repo_content}>
-                        <RepoItems/>
+                        <RepoItem/>
                     </div>
                 </div>
             </div>

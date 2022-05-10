@@ -24,9 +24,9 @@ export const setUserReposAC = (payload: Array<RootObject>) => {
 export type SetUserRepoType = ReturnType<typeof setUserReposAC>
 
 //thunk
-export const setRepoTC = (payload: {user: string, pageNumber: number}) => (dispatch: Dispatch, getState: any) => {
+export const setRepoTC = (user: string, pageNumber: number = 1) => (dispatch: Dispatch, getState: any) => {
     dispatch(setLoaderAC())
-    GetRepositoriesApi.gerRepos(payload.user, payload.pageNumber)
+    GetRepositoriesApi.gerRepos(user, pageNumber)
         .then((res) => {
             debugger
             // @ts-ignore
