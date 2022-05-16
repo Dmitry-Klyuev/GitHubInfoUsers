@@ -1,9 +1,9 @@
 import {Dispatch} from "redux";
 import {GetUserApi} from "../../api/api";
 
-
 export type defaultStateType = {
     loading: boolean
+    error: boolean
     user: {
         avatar_url: string | undefined,
         name: string | undefined,
@@ -16,36 +16,41 @@ export type defaultStateType = {
 }
 
 const defaultState = {
-        loading: false,
-        user: {
-            avatar_url: '',
-            name: '',
-            html_url: undefined,
-            login: undefined,
-            followers: undefined,
-            following: undefined,
-            public_repos: 0,
-        },
-    }
-;
+    error: false,
+    loading: false,
+    user: {
+        avatar_url: '',
+        name: '',
+        html_url: undefined,
+        login: undefined,
+        followers: undefined,
+        following: undefined,
+        public_repos: 0,
+    },
+};
 
-type RootActionType = SetUserType | SetLoaderType
+type RootActionType = SetUserType | SetLoaderType | SetErrorType
 
 export let AppReducer = (state: defaultStateType = defaultState, action: RootActionType): defaultStateType => {
     switch (action.type) {
         case "SET_USER": {
-            // return {...state, user: {...action.payload}};
-            return {...state, user: {avatar_url: action.payload.avatar_url,
+            return {
+                ...state, user: {
+                    avatar_url: action.payload.avatar_url,
                     name: action.payload.name,
                     html_url: action.payload.html_url,
                     login: action.payload.login,
                     followers: action.payload.followers,
                     following: action.payload.following,
                     public_repos: action.payload.public_repos,
-                }}
+                },
+            };
         }
-        case "SET_LOADER":{
-            return {...state, loading: !state.loading }
+        case "SET_LOADER": {
+            return {...state, loading: !state.loading};
+        }
+        case "SET_ERROR": {
+            return {...state, error: !state.error};
         }
         default: {
             return state;
@@ -59,27 +64,34 @@ export const setUserAC = (payload: {
                               html_url: string,
                               login: string,
                               followers: number,
-                              following: number ,
+                              following: number,
                               public_repos: number,
                           },
 ) => {
     return {type: 'SET_USER', payload} as const;
 };
 export const setLoaderAC = () => {
-    return {type: "SET_LOADER"} as const
-}
+    return {type: "SET_LOADER"} as const;
+};
+export const setErrorAC = () => {
+    return {type: 'SET_ERROR'} as const;
+};
 
 export type SetUserType = ReturnType<typeof setUserAC>
 export type SetLoaderType = ReturnType<typeof setLoaderAC>
+export type SetErrorType = ReturnType<typeof setErrorAC>
 
 //thunk
 export const setUserTC = (user: string) => (dispatch: Dispatch) => {
-    dispatch(setLoaderAC())
+    dispatch(setLoaderAC());
     GetUserApi.getUsers(user)
         .then((res) => {
-            dispatch(setUserAC(res.data))
-            dispatch(setLoaderAC())
-        });
+                debugger
+                dispatch(setUserAC(res.data));
+                dispatch(setLoaderAC());
+        })
+        .catch((e=>console.log(e)))
+
 };
 
 

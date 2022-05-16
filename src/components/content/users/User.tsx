@@ -6,10 +6,14 @@ import style from './user.module.scss';
 import followers from './img/followers.png';
 import following from './img/following.png';
 import {RepoItem} from "./Repo_item/RepoItem";
+import {useNavigate} from "react-router-dom";
 
 export const User = () => {
     const user = useSelector<RootReducerType, defaultStateType["user"]>(state => state.userReducer.user);
-
+    const navigate = useNavigate()
+    if (!user.name){
+        navigate('../404')
+    }
     return (
         <div className={style.container}>
             <div className={style.info}>

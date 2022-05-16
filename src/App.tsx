@@ -7,14 +7,15 @@ import {InstalUser} from "./components/content/instalUser/InstalUser";
 import {User} from "./components/content/users/User";
 import {useSelector} from "react-redux";
 import {RootReducerType} from "./store/store";
+import {ErrorUser} from "./components/content/error/ErrorUser";
 
 function App() {
-    const loader = useSelector<RootReducerType, boolean>(state => state.userReducer.loading)
-    const navigate = useNavigate()
+    const loader = useSelector<RootReducerType, boolean>(state => state.userReducer.loading);
+    const navigate = useNavigate();
 
-    useEffect(()=> {
-        navigate('/')
-    },[navigate])
+    useEffect(() => {
+        navigate('/');
+    }, []);
 
     return (
         <div className={'container'}>
@@ -24,14 +25,13 @@ function App() {
                 <img src={logo} alt="logo"/>
                 <Search/>
             </div>
-                <Routes>
-                    <Route path={'/'} element={<InstalUser/>}/>
-                    <Route path={`user/*`} element={<User/>}/>
-                </Routes>
+            <Routes>
+                <Route path={'/'} element={<InstalUser/>}/>
+                <Route path={`user/*`} element={<User/>}/>
+                <Route path={'404'} element={<ErrorUser/>}/>
+            </Routes>
         </div>
-
-    )
-        ;
+    );
 }
 
 export default App;

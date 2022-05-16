@@ -1,9 +1,11 @@
 .headerInput{
+  width: 100%;
   display: flex;
   justify-content: start;
   align-items: center;
   input{
-    width: 500px;
+    display: block;
+    width: 40%;
     height: 40px;
     border-radius: 6px;
     border: 0 solid;
@@ -13,7 +15,10 @@
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
-
+    @media (max-width: 520px){
+      width: 90%
+    }
   }
+
 
 }

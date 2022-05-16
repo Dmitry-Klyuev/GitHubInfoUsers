@@ -1,9 +1,8 @@
 .container {
-  position: absolute;
-  bottom: calc(100vh - 97%);
-  right: calc(100vw - 85%);
   display: flex;
+  justify-content: end;
   align-items: center;
+  margin-right: 10%;
 
   .countRepos {
 

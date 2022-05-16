@@ -28,7 +28,6 @@ export const setRepoTC = (user: string, pageNumber: number = 1) => (dispatch: Di
     dispatch(setLoaderAC())
     GetRepositoriesApi.gerRepos(user, pageNumber)
         .then((res) => {
-            debugger
             // @ts-ignore
             dispatch(setUserReposAC(res.data));
             dispatch(setLoaderAC())

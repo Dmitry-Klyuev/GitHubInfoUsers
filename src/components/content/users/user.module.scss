@@ -1,5 +1,11 @@
 .container{
-  margin: 28px 56px 30px 50px;
+  //margin: 28px 56px 30px 50px;
+  height: 100%;
+  width: 95%;
+  margin: 0 auto;
+  @media (max-width: 900px){
+    width: 100%;
+  }
 
   img{
     width: 280px;
@@ -10,12 +16,19 @@
     margin-top: 29px;
     display: flex;
     justify-content:space-between;
-    align-content: start;
+    align-content: center;
+    //flex-wrap: wrap;
+    @media (max-width: 900px) {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
     .name{
       font-family: 'Inter';
       font-weight: 600;
       font-size: 26px;
       color: #000000;
+      margin-right: 15px;
       .photo{
         margin-bottom: 45px;
       }
@@ -54,14 +67,34 @@
       }
     }
     .repo{
-      width: 70vw;
+      width: 100%;
+      margin-left: 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       p{
         font-family: 'Inter';
         font-weight: 600;
         font-size: 32px;
         line-height: 130%;
-        position: relative;
-        top: -55px;
+        @media (max-width: 900px ){
+          margin-top: 50px;
+          text-align: center;
+        }
+      }
+      @media (max-width: 900px ){
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .repo_content{
+        @media (max-width: 900px) {
+          width: 90%;
+          display: flex;
+          flex-direction:column;
+          justify-content: space-between;
+        }
       }
     }
   }

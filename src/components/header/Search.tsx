@@ -20,6 +20,7 @@ export const Search = () => {
             // @ts-ignore
             dispatch(setRepoTC(searchValue))
             navigate(`/user/${searchValue}`)
+            setSearchValue('')
         }
     }
 
@@ -31,11 +32,6 @@ export const Search = () => {
                    onChange={searchInputValue}
                    onKeyPress={onKeyPressHandler}
             />
-
         </div>
     )
-}
-
-function UseDispatch() {
-    throw new Error("Function not implemented.");
 }
