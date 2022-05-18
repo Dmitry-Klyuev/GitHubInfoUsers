@@ -1,7 +1,7 @@
 .reposWrapper{
   margin: 5px;
     span{
-      font-family: 'Inter';
+      font-family: 'Inter', sans-serif;
       font-style: normal;
       font-weight: 600;
       font-size: 32px;
@@ -14,6 +14,6 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
   }
 }

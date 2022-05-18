@@ -1,7 +1,7 @@
 .headerInput{
   width: 100%;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   input{
     display: block;
@@ -11,7 +11,7 @@
     border: 0 solid;
     padding-left: 10px;
     outline: none;
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
