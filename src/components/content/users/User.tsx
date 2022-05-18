@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useSelector} from "react-redux";
 import {RootReducerType} from "../../../store/store";
 import {defaultStateType} from "../../reducer/UserInfoReducer";
@@ -10,9 +10,9 @@ import {useNavigate} from "react-router-dom";
 
 export const User = () => {
     const user = useSelector<RootReducerType, defaultStateType["user"]>(state => state.userReducer.user);
-    const navigate = useNavigate()
-    if (!user.name){
-        navigate('../404')
+    const navigate = useNavigate();
+    if (!user.name) {
+        navigate('../404');
     }
     return (
         <div className={style.container}>
@@ -20,9 +20,9 @@ export const User = () => {
                 <div className={style.name}>
                     <div className={style.photo}>
                         <img src={user?.avatar_url} alt=""/>
-                       <p>{user?.name}</p>
+                        <p>{user?.name}</p>
                     </div>
-                    <a href={user?.html_url} target="_blank">{user?.login}</a>
+                    <a href={user.html_url} target="_blank" rel="noreferrer">{user?.login}</a>
                     <div className={style.social}>
                         <p><img src={followers} alt="followers"/>
                             {user?.followers} followers

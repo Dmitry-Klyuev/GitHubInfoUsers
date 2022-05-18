@@ -86,7 +86,6 @@ export const setUserTC = (user: string) => (dispatch: Dispatch) => {
     dispatch(setLoaderAC());
     GetUserApi.getUsers(user)
         .then((res) => {
-                debugger
                 dispatch(setUserAC(res.data));
                 dispatch(setLoaderAC());
         })

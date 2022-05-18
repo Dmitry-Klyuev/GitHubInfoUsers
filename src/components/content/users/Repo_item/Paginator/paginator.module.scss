@@ -3,9 +3,13 @@
   justify-content: end;
   align-items: center;
   margin-right: 10%;
-
+  @media (max-width: 900px) {
+    justify-content: center;
+  }
   .countRepos {
-
+    @media (max-width: 900px) {
+        display: none;
+    }
   }
 
   .paginator {
