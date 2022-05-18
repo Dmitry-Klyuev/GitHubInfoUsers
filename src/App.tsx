@@ -26,7 +26,7 @@ function App() {
                 <Search/>
             </div>
             <Routes>
-                <Route path={'/'} element={<InstalUser/>}/>
+                <Route path={'*'} element={<InstalUser/>}/>
                 <Route path={`user/*`} element={<User/>}/>
                 <Route path={'404'} element={<ErrorUser/>}/>
             </Routes>
