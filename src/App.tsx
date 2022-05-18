@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './App.scss';
 import logo from './components/header/logo.png';
 import {Search} from "./components/header/Search";
@@ -13,16 +13,16 @@ function App() {
     const loader = useSelector<RootReducerType, boolean>(state => state.userReducer.loading);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        navigate('/');
-    }, []);
+    const logoHandler = () => {
+     navigate( '/')
+    }
 
     return (
         <div className={'container'}>
             <div className={loader ? 'loader' : undefined}>
             </div>
             <div className={'header'}>
-                <img src={logo} alt="logo"/>
+                <img src={logo} alt="logo" onClick={logoHandler}/>
                 <Search/>
             </div>
             <Routes>
