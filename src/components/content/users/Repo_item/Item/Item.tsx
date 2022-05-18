@@ -13,7 +13,7 @@ export const Item = ({id, description, url, name}: ItemPropsType) => {
     return(
         <div className={style.itemContainer}>
             <div className={style.itemContent}>
-                <a href={url} target="_blank">{name}</a>
+                <a href={url} rel="noreferrer" target="_blank">{name}</a>
                 <span>{description}</span>
             </div>
 
