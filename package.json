@@ -1,6 +1,5 @@
 {
-  "name": "GitHubInfo",
-  "homepage": "https://Dmitry-Klyuev.github.io/GitHubInfoUsers",
+  "name": "githubinfo",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
