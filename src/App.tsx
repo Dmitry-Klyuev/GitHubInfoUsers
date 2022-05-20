@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.scss';
 import logo from './components/header/logo.png';
 import {Search} from "./components/header/Search";
@@ -9,13 +9,19 @@ import {useSelector} from "react-redux";
 import {RootReducerType} from "./store/store";
 import {ErrorUser} from "./components/content/error/ErrorUser";
 
+
 function App() {
     const loader = useSelector<RootReducerType, boolean>(state => state.userReducer.loading);
     const navigate = useNavigate();
 
+    useEffect(()=>{
+        <InstalUser/>
+    },[])
+
     const logoHandler = () => {
      navigate( '/')
     }
+
 
     return (
         <div className={'container'}>
